@@ -2,10 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c11758c-e1fa-472a-ac6e-01825fa6e115" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wh_api.py" beforeDir="false" afterPath="$PROJECT_DIR$/wh_api.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wormhole_update.ui" beforeDir="false" afterPath="$PROJECT_DIR$/wormhole_update.ui" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wormhole_update_tool.py" beforeDir="false" afterPath="$PROJECT_DIR$/wormhole_update_tool.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/Analysis-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/EXE-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PKG-00.pkg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PKG-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PKG-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PYZ-00.pyz" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PYZ-00.pyz" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PYZ-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PYZ-00.toc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/base_library.zip" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/base_library.zip" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/warn-wormhole_update_tool.txt" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/warn-wormhole_update_tool.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/xref-wormhole_update_tool.html" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/xref-wormhole_update_tool.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wormhole_update_ui.py" beforeDir="false" afterPath="$PROJECT_DIR$/wormhole_update_ui.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -86,7 +91,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583479496987</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="홈페이지 및 reset버튼 추가">
+      <created>1583482547373</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583482547373</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -104,7 +116,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="pyinstaller 설치 및 빌드파일 생성" />
-    <option name="LAST_COMMIT_MESSAGE" value="pyinstaller 설치 및 빌드파일 생성" />
+    <MESSAGE value="홈페이지 및 reset버튼 추가" />
+    <option name="LAST_COMMIT_MESSAGE" value="홈페이지 및 reset버튼 추가" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
