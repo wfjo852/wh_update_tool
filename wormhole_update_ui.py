@@ -20,13 +20,13 @@ class Ui_wormhole_update_tool(object):
     def setupUi(self, wormhole_update_tool):
         if wormhole_update_tool.objectName():
             wormhole_update_tool.setObjectName(u"wormhole_update_tool")
-        wormhole_update_tool.resize(736, 696)
+        wormhole_update_tool.resize(736, 713)
         self.Wormhole_update_tool_label = QLabel(wormhole_update_tool)
         self.Wormhole_update_tool_label.setObjectName(u"Wormhole_update_tool_label")
         self.Wormhole_update_tool_label.setGeometry(QRect(30, 20, 241, 31))
         self.textb_log = QTextBrowser(wormhole_update_tool)
         self.textb_log.setObjectName(u"textb_log")
-        self.textb_log.setGeometry(QRect(30, 440, 671, 221))
+        self.textb_log.setGeometry(QRect(30, 440, 671, 201))
         self.layoutWidget = QWidget(wormhole_update_tool)
         self.layoutWidget.setObjectName(u"layoutWidget")
         self.layoutWidget.setGeometry(QRect(90, 150, 251, 81))
@@ -125,6 +125,7 @@ class Ui_wormhole_update_tool(object):
 
         self.input_http_port = QLineEdit(self.layoutWidget_2)
         self.input_http_port.setObjectName(u"input_http_port")
+        self.input_http_port.setEnabled(False)
 
         self.wh_http.setWidget(0, QFormLayout.FieldRole, self.input_http_port)
 
@@ -135,6 +136,7 @@ class Ui_wormhole_update_tool(object):
 
         self.input_http_id = QLineEdit(self.layoutWidget_2)
         self.input_http_id.setObjectName(u"input_http_id")
+        self.input_http_id.setEnabled(False)
 
         self.wh_http.setWidget(1, QFormLayout.FieldRole, self.input_http_id)
 
@@ -145,6 +147,7 @@ class Ui_wormhole_update_tool(object):
 
         self.input_http_pw = QLineEdit(self.layoutWidget_2)
         self.input_http_pw.setObjectName(u"input_http_pw")
+        self.input_http_pw.setEnabled(False)
 
         self.wh_http.setWidget(2, QFormLayout.FieldRole, self.input_http_pw)
 
@@ -157,6 +160,15 @@ class Ui_wormhole_update_tool(object):
         self.wh_version.setObjectName(u"wh_version")
         self.wh_version.setGeometry(QRect(405, 10, 291, 41))
         self.wh_version.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
+        self.pushb_wormhole_hompage = QPushButton(wormhole_update_tool)
+        self.pushb_wormhole_hompage.setObjectName(u"pushb_wormhole_hompage")
+        self.pushb_wormhole_hompage.setEnabled(False)
+        self.pushb_wormhole_hompage.setGeometry(QRect(470, 650, 231, 31))
+        self.pushb_wormhole_hompage.setFocusPolicy(Qt.NoFocus)
+        self.pushb_reset = QPushButton(wormhole_update_tool)
+        self.pushb_reset.setObjectName(u"pushb_reset")
+        self.pushb_reset.setGeometry(QRect(30, 660, 75, 23))
+        self.pushb_reset.setFocusPolicy(Qt.NoFocus)
 
         self.retranslateUi(wormhole_update_tool)
 
@@ -164,7 +176,7 @@ class Ui_wormhole_update_tool(object):
     # setupUi
 
     def retranslateUi(self, wormhole_update_tool):
-        wormhole_update_tool.setWindowTitle(QCoreApplication.translate("wormhole_update_tool", u"Wormhole_update_tool", None))
+        wormhole_update_tool.setWindowTitle(QCoreApplication.translate("wormhole_update_tool", u"Form", None))
         self.Wormhole_update_tool_label.setText(QCoreApplication.translate("wormhole_update_tool", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">WORMHOLE UPDATE TOOL</span></p></body></html>", None))
         self.label_port.setText(QCoreApplication.translate("wormhole_update_tool", u"ssh port", None))
         self.label_id.setText(QCoreApplication.translate("wormhole_update_tool", u"Server ID", None))
@@ -182,5 +194,7 @@ class Ui_wormhole_update_tool(object):
         self.label_http_pw.setText(QCoreApplication.translate("wormhole_update_tool", u"Admin PW", None))
         self.pushb_http_login.setText(QCoreApplication.translate("wormhole_update_tool", u"Wormhole_sign_in", None))
         self.wh_version.setText(QCoreApplication.translate("wormhole_update_tool", u"Before connecting to the Wormhole", None))
+        self.pushb_wormhole_hompage.setText(QCoreApplication.translate("wormhole_update_tool", u"Wormhole homepage", None))
+        self.pushb_reset.setText(QCoreApplication.translate("wormhole_update_tool", u"Reset", None))
     # retranslateUi
 

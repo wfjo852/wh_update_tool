@@ -3,11 +3,12 @@
 import wormhole_update_ui
 import sys
 import wh_ssh , wh_api
-
+import webbrowser
 
 # global wormhole_directory
 # global wh_system_version
 # global update_forder_name
+# global wh_sdk
 
 
 update_forder_check = "wh2web"
@@ -16,7 +17,6 @@ update_forder_check = "wh2web"
 
 # class 호출
 update_ui = wormhole_update_ui.Ui_wormhole_update_tool()
-wh_sdk = wh_api
 ssh_manager = wh_ssh.SSHManager()
 
 #웜홀 업데이트 UI 오브젝트 세팅
@@ -76,9 +76,12 @@ def ssh_login():
         update_ui.input_pw.setEnabled(False)
         update_ui.pushb_server_login.setEnabled(False)
 
-        #파일업로드 활성화
-        update_ui.input_update_file_path.setEnabled(True)
-        update_ui.toolb_find_file.setEnabled(True)
+        #SSH 접속 성공시 HTTP 입력창 활성화
+        update_ui.input_http_port.setEnabled(True)
+        update_ui.input_http_id.setEnabled(True)
+        update_ui.input_http_pw.setEnabled(True)
+
+
 
     else :
         update_ui.textb_log.setText("웜홀의 설치 경로를 찾을 수 없습니다. \n 수동으로 업데이트 해야합니다.")
@@ -86,15 +89,16 @@ def ssh_login():
 
 def http_login():
     global wh_system_version
+    global wh_sdk
 
     url = 'http://'+update_ui.input_host.text()+":"+ update_ui.input_http_port.text()
     id = update_ui.input_http_id.text()
     pw = update_ui.input_http_pw.text()
 
-    wh_api = wh_sdk.Wh_api(url, id, pw)
+    wh_sdk = wh_api.Wh_api(url, id, pw)
 
     try :
-        wh_system_version = wh_api.wh_system_version()
+        wh_system_version = wh_sdk.wh_system_version()
     except:
         update_ui.wh_version.setText(wormhole_update_ui.QCoreApplication.translate("wormhole_update_tool",u"Sign_in Error",None))
 
@@ -108,6 +112,13 @@ def http_login():
     update_ui.input_http_pw.setEnabled(False)
     update_ui.pushb_http_login.setEnabled(False)
 
+    # 파일업로드 활성화
+    update_ui.input_update_file_path.setEnabled(True)
+    update_ui.toolb_find_file.setEnabled(True)
+
+    #웜홀 홈페이지 오픈 활성화
+    update_ui.pushb_wormhole_hompage.setEnabled(True)
+
 def find_directory():
     global update_forder_name
     update_forder_name = wormhole_update_ui.QFileDialog.getExistingDirectory()
@@ -120,28 +131,65 @@ def find_directory():
     else:
         update_ui.input_update_file_path.setText(update_forder_check + " 폴더를 선택해 주세요.")
 
-
-
 def wormhole_update():
     global wormhole_directory
     global update_forder_name
+    global wh_sdk
 
+    #버튼 잠금
     update_ui.pushb_wh_update.setEnabled(False)
     update_ui.pushb_wh_update.repaint()
 
+    #시스템 메시지 출력
     update_ui.textb_log.setText('웜홀을 업데이트 중입니다. \n 프로그램을 끄지 말아주세요.')
     update_ui.input_update_file_path.repaint()
 
-
-
+    #Wh2web폴더 서버로 업로드
     remote_path = wormhole_directory.split()
     remote_path = remote_path[0] +"/"
     print(update_forder_name,">>>copy>>>>", remote_path)
     ssh_manager.send_directory(update_forder_name, remote_path)
-    update_ui.textb_log.setText('웜홀을 업데이트가 완료되었습니다. \n http://%s:%s/setting/check 에 들어가서 DB를 업데이트 해주세요'%(update_ui.input_host.text(),update_ui.input_http_port.text()))
+
+    #웜홀 DB업데이트
+    wh_sdk.db_check()
+
+
+    update_ui.textb_log.setText('웜홀을 업데이트가 완료되었습니다.')
     update_ui.input_update_file_path.setText('update_done')
     update_forder_name = ""
+    update_ui.input_update_file_path.setEnabled(False)
+    update_ui.toolb_find_file.setEnabled(False)
 
+def homepage_open():
+    url = "http://" + update_ui.input_host.text()+":"+update_ui.input_http_port.text()
+    webbrowser.open(url)
+
+def reset():
+    update_ui.input_host.setEnabled(True)
+    update_ui.input_port.setEnabled(True)
+    update_ui.input_id.setEnabled(True)
+    update_ui.input_pw.setEnabled(True)
+
+    update_ui.input_http_port.setEnabled(False)
+    update_ui.input_http_id.setEnabled(False)
+    update_ui.input_http_pw.setEnabled(False)
+    update_ui.pushb_http_login.setEnabled(False)
+
+    update_ui.pushb_server_login.setEnabled(False)
+
+    update_ui.input_update_file_path.setEnabled(False)
+    update_ui.toolb_find_file.setEnabled(False)
+    update_ui.pushb_wh_update.setEnabled(False)
+
+    update_ui.pushb_wormhole_hompage.setEnabled(False)
+
+
+    update_ui.input_host.setText("")
+    update_ui.input_pw.setText("")
+    update_ui.input_http_pw.setText("")
+    update_ui.input_update_file_path.setText(update_forder_check + " 폴더를 선택해 주세요.")
+    update_ui.textb_log.setText("")
+    update_ui.wh_version.setText(wormhole_update_ui.QCoreApplication.translate("wormhole_update_tool", u"Before connecting to the Wormhole", None))
 
 
 #ssh_접속 정보 기본값 설정
@@ -183,10 +231,9 @@ update_ui.input_http_pw.textChanged.connect(http_login_enable)
 #http_비밀번호 안보이도록 처리
 update_ui.input_http_pw.setEchoMode(wormhole_update_ui.QLineEdit.Password)
 
+
 #http_로그인 버튼
 update_ui.pushb_http_login.clicked.connect(http_login)
-
-
 
 #파일 찾기 버튼
 update_ui.toolb_find_file.clicked.connect(find_directory)
@@ -194,12 +241,14 @@ update_ui.toolb_find_file.clicked.connect(find_directory)
 #파일 찾기 기본 값
 update_ui.input_update_file_path.setText(update_forder_check + " 폴더를 선택해 주세요.")
 
-
 #웜홀 업데이트 버튼
 update_ui.pushb_wh_update.clicked.connect(wormhole_update)
 
+#웜홀 홈페이지 버튼
+update_ui.pushb_wormhole_hompage.clicked.connect(homepage_open)
 
-
+#reset버튼
+update_ui.pushb_reset.clicked.connect(reset)
 
 
 

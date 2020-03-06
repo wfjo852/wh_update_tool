@@ -103,7 +103,7 @@ class Wh_api:
         else:
             print("프로젝트가 없습니다.")
 
-    # Global Setting 정보 조회
+    # Global setting
     def shot_tasktype_list(self):
         api = "/api/tasktype/shot/list"
         api_url = self.wh_url + api
@@ -139,6 +139,20 @@ class Wh_api:
             self.wh_system_ver = {"": ""}
             print("No wh_system_ver")
             return self.wh_system_ver
+
+    def db_check(self):
+        api = "/api/setting/db/check"
+        api_url = self.wh_url + api
+
+        # 결과 호출
+        result = requests.post(api_url, cookies=self.cookies)
+
+        # 결과 확인
+        if result.status_code == 200:
+            return "DB_update_done"
+        else:
+            return "DB_update_error"
+
 
     # 조회 API  순서대로 조회해야함
     def project_list(self, finished=""):
