@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7c11758c-e1fa-472a-ac6e-01825fa6e115" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/Analysis-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/Analysis-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/EXE-00.toc" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/EXE-00.toc" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PKG-00.pkg" beforeDir="false" afterPath="$PROJECT_DIR$/venv/Scripts/build/wormhole_update_tool/PKG-00.pkg" afterDir="false" />
