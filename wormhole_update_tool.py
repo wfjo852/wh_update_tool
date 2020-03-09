@@ -9,7 +9,7 @@ import webbrowser
 # global wh_system_version
 # global update_forder_name
 # global wh_sdk
-
+# global ssh_manager
 
 update_forder_check = "wh2web"
 
@@ -83,6 +83,8 @@ def ssh_login():
 
 
 
+
+
     else :
         update_ui.textb_log.setText("웜홀의 설치 경로를 찾을 수 없습니다. \n 수동으로 업데이트 해야합니다.")
         update_ui.pushb_server_login.setEnabled(True)
@@ -102,6 +104,14 @@ def http_login():
     except:
         update_ui.wh_version.setText(wormhole_update_ui.QCoreApplication.translate("wormhole_update_tool",u"Sign_in Error",None))
 
+        #웜홀 http로그인 실패시 Wormhole server start만 활성화
+        update_ui.pushb_wh_status_start.setEnabled(True)
+        update_ui.pushb_wh_status_stop.setEnabled(False)
+
+        return
+
+
+    #상단레이블 웜홀 버전 기록
     update_ui.wh_version.setText(wormhole_update_ui.QCoreApplication.translate("wormhole_update_tool", u"Current Version : " + wh_system_version['version'] +
                                                                                "\nLast Update_time : "+wh_system_version['updated_time'], None))
 
@@ -118,6 +128,9 @@ def http_login():
 
     #웜홀 홈페이지 오픈 활성화
     update_ui.pushb_wormhole_hompage.setEnabled(True)
+
+    #Wormhole Server stop 활성화
+    update_ui.pushb_wh_status_stop.setEnabled(True)
 
 def find_directory():
     global update_forder_name
@@ -165,10 +178,12 @@ def homepage_open():
     webbrowser.open(url)
 
 def reset():
+
     update_ui.input_host.setEnabled(True)
     update_ui.input_port.setEnabled(True)
     update_ui.input_id.setEnabled(True)
     update_ui.input_pw.setEnabled(True)
+
 
     update_ui.input_http_port.setEnabled(False)
     update_ui.input_http_id.setEnabled(False)
@@ -183,6 +198,9 @@ def reset():
 
     update_ui.pushb_wormhole_hompage.setEnabled(False)
 
+    update_ui.pushb_wh_status_start.setEnabled(False)
+    update_ui.pushb_wh_status_stop.setEnabled(False)
+
 
     update_ui.input_host.setText("")
     update_ui.input_pw.setText("")
@@ -190,6 +208,40 @@ def reset():
     update_ui.input_update_file_path.setText(update_forder_check + " 폴더를 선택해 주세요.")
     update_ui.textb_log.setText("")
     update_ui.wh_version.setText(wormhole_update_ui.QCoreApplication.translate("wormhole_update_tool", u"Before connecting to the Wormhole", None))
+
+
+def wh_server_start():
+
+    global wormhole_directory
+    update_ui.pushb_wh_status_start.setEnabled(False)
+    update_ui.pushb_wh_status_start.repaint()
+    update_ui.pushb_wh_status_stop.setEnabled(True)
+    update_ui.pushb_wh_status_stop.repaint()
+    update_ui.textb_log.setText('웜홀 서버를 시작 하는 중입니다.\n Wormhole update tool을 끄지마세요.')
+    update_ui.textb_log.repaint()
+
+
+    cd_comment = 'cd %s\n' \
+                 'docker-compose up -d'%(wormhole_directory)
+    ssh_manager.send_command(cd_comment)
+    update_ui.textb_log.setText('Wormhole server start')
+
+def wh_server_stop():
+    global wormhole_directory
+    update_ui.pushb_wh_status_start.setEnabled(True)
+    update_ui.pushb_wh_status_start.repaint()
+    update_ui.pushb_wh_status_stop.setEnabled(False)
+    update_ui.pushb_wh_status_stop.repaint()
+    update_ui.textb_log.setText('웜홀 서버를 종료 하는 중입니다.\n Wormhole update tool을 끄지마세요.')
+    update_ui.textb_log.repaint()
+
+
+    cd_comment = 'cd %s\n' \
+                 'docker-compose down'%(wormhole_directory)
+    ssh_manager.send_command(cd_comment)
+    reset()
+    update_ui.textb_log.setText('wormhole server Stop')
+
 
 
 #ssh_접속 정보 기본값 설정
@@ -250,6 +302,11 @@ update_ui.pushb_wormhole_hompage.clicked.connect(homepage_open)
 #reset버튼
 update_ui.pushb_reset.clicked.connect(reset)
 
+#웜홀 서버 start
+update_ui.pushb_wh_status_start.clicked.connect(wh_server_start)
+
+#웜홀 서버 Stop
+update_ui.pushb_wh_status_stop.clicked.connect(wh_server_stop)
 
 
 

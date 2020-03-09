@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>736</width>
-    <height>713</height>
+    <height>599</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -30,9 +30,9 @@
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>440</y>
+     <y>410</y>
      <width>671</width>
-     <height>201</height>
+     <height>111</height>
     </rect>
    </property>
   </widget>
@@ -85,7 +85,7 @@
    <property name="geometry">
     <rect>
      <x>190</x>
-     <y>250</y>
+     <y>240</y>
      <width>151</width>
      <height>31</height>
     </rect>
@@ -117,7 +117,7 @@
    <property name="geometry">
     <rect>
      <x>550</x>
-     <y>380</y>
+     <y>360</y>
      <width>151</width>
      <height>31</height>
     </rect>
@@ -136,7 +136,7 @@
    <property name="geometry">
     <rect>
      <x>60</x>
-     <y>310</y>
+     <y>290</y>
      <width>151</width>
      <height>16</height>
     </rect>
@@ -149,9 +149,9 @@
    <property name="geometry">
     <rect>
      <x>90</x>
-     <y>340</y>
+     <y>320</y>
      <width>601</width>
-     <height>22</height>
+     <height>31</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="update_file">
@@ -277,9 +277,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>540</x>
-     <y>250</y>
-     <width>151</width>
+     <x>610</x>
+     <y>240</y>
+     <width>81</width>
      <height>31</height>
     </rect>
    </property>
@@ -287,7 +287,7 @@
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="text">
-    <string>Wormhole_sign_in</string>
+    <string>sign_in</string>
    </property>
   </widget>
   <widget class="QLabel" name="wh_version">
@@ -312,9 +312,9 @@
    </property>
    <property name="geometry">
     <rect>
-     <x>470</x>
-     <y>650</y>
-     <width>231</width>
+     <x>440</x>
+     <y>240</y>
+     <width>161</width>
      <height>31</height>
     </rect>
    </property>
@@ -322,14 +322,14 @@
     <enum>Qt::NoFocus</enum>
    </property>
    <property name="text">
-    <string>Wormhole homepage</string>
+    <string>Wormhole Homepage</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushb_reset">
    <property name="geometry">
     <rect>
      <x>30</x>
-     <y>660</y>
+     <y>540</y>
      <width>75</width>
      <height>23</height>
     </rect>
@@ -339,6 +339,44 @@
    </property>
    <property name="text">
     <string>Reset</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushb_wh_status_stop">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>560</x>
+     <y>540</y>
+     <width>141</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="text">
+    <string>Wormhole Server Stop</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushb_wh_status_start">
+   <property name="enabled">
+    <bool>false</bool>
+   </property>
+   <property name="geometry">
+    <rect>
+     <x>410</x>
+     <y>540</y>
+     <width>141</width>
+     <height>23</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="text">
+    <string>Wormhole Server Start</string>
    </property>
   </widget>
  </widget>
