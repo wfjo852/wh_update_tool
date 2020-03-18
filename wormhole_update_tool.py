@@ -24,6 +24,8 @@ app = wormhole_update_ui.QApplication(sys.argv)
 wormhole_update_tool = wormhole_update_ui.QDialog()
 update_ui.setupUi(wormhole_update_tool)
 
+
+
 def ssh_login_enable():
     if update_ui.input_host.text() \
             and update_ui.input_port.text() \

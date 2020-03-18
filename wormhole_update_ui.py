@@ -186,7 +186,7 @@ class Ui_wormhole_update_tool(object):
     # setupUi
 
     def retranslateUi(self, wormhole_update_tool):
-        wormhole_update_tool.setWindowTitle(QCoreApplication.translate("wormhole_update_tool", u"Wormhole_Update_tool", None))
+        wormhole_update_tool.setWindowTitle(QCoreApplication.translate("wormhole_update_tool", u"Form", None))
         self.Wormhole_update_tool_label.setText(QCoreApplication.translate("wormhole_update_tool", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">WORMHOLE UPDATE TOOL</span></p></body></html>", None))
         self.label_port.setText(QCoreApplication.translate("wormhole_update_tool", u"ssh port", None))
         self.label_id.setText(QCoreApplication.translate("wormhole_update_tool", u"Server ID", None))
