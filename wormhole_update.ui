@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Form</string>
+   <string>Wormhole_Update_Tool</string>
   </property>
   <widget class="QLabel" name="Wormhole_update_tool_label">
    <property name="geometry">
@@ -167,6 +167,9 @@
       <property name="enabled">
        <bool>false</bool>
       </property>
+      <property name="readOnly">
+       <bool>true</bool>
+      </property>
      </widget>
     </item>
     <item row="0" column="2">
@@ -189,6 +192,9 @@
      <width>531</width>
      <height>20</height>
     </rect>
+   </property>
+   <property name="placeholderText">
+    <string>ex)192.168.0.100</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_host">
@@ -377,6 +383,22 @@
    </property>
    <property name="text">
     <string>Wormhole Server Start</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="build_date">
+   <property name="geometry">
+    <rect>
+     <x>500</x>
+     <y>570</y>
+     <width>221</width>
+     <height>20</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Update Tool Build Date 2020/03/25</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
    </property>
   </widget>
  </widget>

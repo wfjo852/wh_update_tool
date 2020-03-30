@@ -94,6 +94,7 @@ class Ui_wormhole_update_tool(object):
         self.input_update_file_path = QLineEdit(self.layoutWidget1)
         self.input_update_file_path.setObjectName(u"input_update_file_path")
         self.input_update_file_path.setEnabled(False)
+        self.input_update_file_path.setReadOnly(True)
 
         self.update_file.addWidget(self.input_update_file_path, 0, 1, 1, 1)
 
@@ -179,6 +180,10 @@ class Ui_wormhole_update_tool(object):
         self.pushb_wh_status_start.setEnabled(False)
         self.pushb_wh_status_start.setGeometry(QRect(410, 540, 141, 23))
         self.pushb_wh_status_start.setFocusPolicy(Qt.NoFocus)
+        self.build_date = QLabel(wormhole_update_tool)
+        self.build_date.setObjectName(u"build_date")
+        self.build_date.setGeometry(QRect(500, 570, 221, 20))
+        self.build_date.setAlignment(Qt.AlignRight|Qt.AlignTrailing|Qt.AlignVCenter)
 
         self.retranslateUi(wormhole_update_tool)
 
@@ -186,7 +191,7 @@ class Ui_wormhole_update_tool(object):
     # setupUi
 
     def retranslateUi(self, wormhole_update_tool):
-        wormhole_update_tool.setWindowTitle(QCoreApplication.translate("wormhole_update_tool", u"Form", None))
+        wormhole_update_tool.setWindowTitle(QCoreApplication.translate("wormhole_update_tool", u"Wormhole_Update_Tool", None))
         self.Wormhole_update_tool_label.setText(QCoreApplication.translate("wormhole_update_tool", u"<html><head/><body><p><span style=\" font-size:12pt; font-weight:600;\">WORMHOLE UPDATE TOOL</span></p></body></html>", None))
         self.label_port.setText(QCoreApplication.translate("wormhole_update_tool", u"ssh port", None))
         self.label_id.setText(QCoreApplication.translate("wormhole_update_tool", u"Server ID", None))
@@ -197,6 +202,7 @@ class Ui_wormhole_update_tool(object):
         self.label_wh_update.setText(QCoreApplication.translate("wormhole_update_tool", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Wormhole_Update</span></p></body></html>", None))
         self.label_update_file.setText(QCoreApplication.translate("wormhole_update_tool", u"Update_file", None))
         self.toolb_find_file.setText(QCoreApplication.translate("wormhole_update_tool", u"...", None))
+        self.input_host.setPlaceholderText(QCoreApplication.translate("wormhole_update_tool", u"ex)192.168.0.100", None))
         self.label_host.setText(QCoreApplication.translate("wormhole_update_tool", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Server Host/IP</span></p></body></html>", None))
         self.label_http_connect_info.setText(QCoreApplication.translate("wormhole_update_tool", u"<html><head/><body><p><span style=\" font-size:11pt; font-weight:600;\">Wormhole Homepage</span></p></body></html>", None))
         self.label_http_port.setText(QCoreApplication.translate("wormhole_update_tool", u"Http port", None))
@@ -208,5 +214,6 @@ class Ui_wormhole_update_tool(object):
         self.pushb_reset.setText(QCoreApplication.translate("wormhole_update_tool", u"Reset", None))
         self.pushb_wh_status_stop.setText(QCoreApplication.translate("wormhole_update_tool", u"Wormhole Server Stop", None))
         self.pushb_wh_status_start.setText(QCoreApplication.translate("wormhole_update_tool", u"Wormhole Server Start", None))
+        self.build_date.setText(QCoreApplication.translate("wormhole_update_tool", u"Update Tool Build Date 2020/03/25", None))
     # retranslateUi
 
